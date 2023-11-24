@@ -36,7 +36,7 @@ const toggleButton = html`
 
 const toggleable = (theme) => {
   let classList =
-    "h-full w-[50%] transition-all delay-75 bg-dark rounded-full flex items-center ";
+    "h-full w-[50%] transition-all delay-75 bg-accent rounded-full flex items-center ";
   classList += theme === "dark" ? "ml-auto" : "mr-auto";
   return html` <div class="${classList}"></div> `;
 };
