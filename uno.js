@@ -4,6 +4,15 @@ import presetTypography from "https://esm.sh/@unocss/preset-typography@0.57.7";
 import { createGenerator } from "https://esm.sh/@unocss/core@0.57.7";
 
 const uno = createGenerator({
+  theme: {
+    colors: {
+      dark: "var(--dark)",
+      light: "var(--light)",
+      gray: "var(--gray)",
+      accent: "var(--accent)",
+      bg: "var(--bg)",
+    },
+  },
   presets: [presetUno(), presetWind(), presetTypography()],
 });
 

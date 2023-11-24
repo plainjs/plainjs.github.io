@@ -39,16 +39,58 @@
         animation-duration: 4s;
         animation-iteration-count: infinite;
       }
+
+      :root {
+        /* modification of the nord light colors  */
+        --dark: #2e3440;
+        --gray: #8c97ac;
+        --light: #e9ecf8;
+        --bg: #fff;
+        --accent: black;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #181819;
+          --light: #333;
+          --gray: #898989;
+          --dark: #efefef;
+          --accent: white;
+        }
+      }
+
+      body[data-theme="light"] {
+        --dark: #2e3440;
+        --gray: #8c97ac;
+        --light: #e9ecf8;
+        --bg: #fff;
+        --accent: black;
+      }
+
+      body[data-theme="dark"] {
+        --bg: #181819;
+        --light: #333;
+        --gray: #898989;
+        --dark: #efefef;
+        --accent: white;
+      }
+
+      .mr-auto {
+        margin-right: auto;
+      }
+      .ml-auto {
+        margin-left: auto;
+      }
     </style>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css"
     />
   </head>
-  <body class="max-w-2xl mx-auto px-2 py-2 bg-zinc-900" un-cloak>
+  <body class="max-w-2xl mx-auto px-2 py-2 bg-bg" un-cloak>
     <header class="h-[20vh] flex items-center">
       <div>
-        <h1 class="text-2xl font-semibold text-zinc-400">PlainJS</h1>
+        <h1 class="text-2xl font-semibold text-dark">PlainJS</h1>
       </div>
       <!-- <nav>
         <ul>
@@ -61,7 +103,7 @@
     <section class="min-h-[75vh]">
       <main
         id="content"
-        class="prose prose-zinc prose-invert min-w-full max-w-full"
+        class="prose prose-dark dark:prose-invert text-dark min-w-full max-w-full"
       >
         <div class="h-full w-full flex items-center justify-center">
           <div class="loading"></div>
@@ -70,5 +112,6 @@
     </section>
     <script type="module" src="/main.js"></script>
     <script type="module" src="/uno.js" async defer></script>
+    <script type="module" src="/themer.js" async defer></script>
   </body>
 </html>
