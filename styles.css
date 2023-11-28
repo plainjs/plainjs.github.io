@@ -1,16 +1,4 @@
-@keyframes loading {
-  0% {
-    transform: scale(0.1);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0.1);
-  }
-}
+@import url("/highlighter.css");
 
 .loading {
   display: flex;
@@ -35,6 +23,8 @@
   --light: #e9ecf8;
   --bg: #fff;
   --accent: #facc14;
+  --accent-rgb: 250, 204, 20;
+  --accent-invert-rgb: 253, 236, 166;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +34,8 @@
     --gray: #898989;
     --dark: #efefef;
     --accent: #facc14;
+    --accent-rgb: 250, 204, 20;
+    --accent-invert-rgb: 10, 9, 1;
   }
 }
 
@@ -53,6 +45,8 @@ body[data-theme="light"] {
   --light: #e9ecf8;
   --bg: #fff;
   --accent: #facc14;
+  --accent-rgb: 250, 204, 20;
+  --accent-invert-rgb: 253, 236, 166;
 }
 
 body[data-theme="dark"] {
@@ -61,6 +55,8 @@ body[data-theme="dark"] {
   --gray: #898989;
   --dark: #efefef;
   --accent: #facc14;
+  --accent-rgb: 250, 204, 20;
+  --accent-invert-rgb: 10, 9, 1;
 }
 
 .mr-auto {
@@ -68,4 +64,18 @@ body[data-theme="dark"] {
 }
 .ml-auto {
   margin-left: auto;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(0.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.1);
+  }
 }
