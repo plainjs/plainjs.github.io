@@ -1,21 +1,53 @@
-import { html, reactive } from "https://esm.sh/@arrow-js/core";
+import { html, reactive, watch } from "https://esm.sh/@arrow-js/core";
 
-import {
-    getCurrentTheme,
-    init,
-    setTheme,
-} from "https://esm.sh/@barelyreaper/themer";
+const THEMER_CONSTANT = "themer";
 
 const state = reactive({
-  theme: getCurrentTheme(),
+  theme: getSimplifiedTheme(),
 });
 
-init();
+function getCurrentTheme() {
+  const current = localStorage.getItem(THEMER_CONSTANT) || getSystemTheme();
+  return current;
+}
+
+function setTheme(theme) {
+  document.body.setAttribute("data-theme", theme);
+  localStorage.setItem(THEMER_CONSTANT, theme);
+}
+
+function getSystemTheme() {
+  const darkPref =
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+  if (darkPref.matches) {
+    return "dark";
+  } else {
+    return "light";
+  }
+}
+
+function getSimplifiedTheme() {
+  const theme = getCurrentTheme();
+  const windowDarkMedia = () =>
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+  if (theme === "default") {
+    if (windowDarkMedia().matches) {
+      return "dark";
+    } else {
+      return "light";
+    }
+  }
+  return theme;
+}
 
 const toggleTheme = () => {
-  state.theme = getCurrentTheme();
-  setTheme(getCurrentTheme() === "dark" ? "light" : "dark");
+  const theme = getSimplifiedTheme();
+  state.theme = theme === "dark" ? "light" : "dark";
 };
+
+watch(() => {
+  setTheme(state.theme);
+});
 
 const toggleButtonContainer = document.createElement("div");
 toggleButtonContainer.classList.add("w-full");
@@ -35,10 +67,12 @@ const toggleButton = html`
 `;
 
 const toggleable = (theme) => {
-  let classList =
-    "h-full w-[50%] transition-all delay-75 bg-accent rounded-full flex items-center ";
-  classList += theme === "dark" ? "ml-auto" : "mr-auto";
-  return html` <div class="${classList}"></div> `;
+  let classList = [
+    "h-full w-[50%] transition-all delay-75 bg-accent rounded-full flex items-center",
+  ]
+    .concat(theme === "dark" ? "ml-auto" : "mr-auto")
+    .join(" ");
+  return html` <div class="${() => classList}"></div> `;
 };
 
 toggleButton(toggleButtonContainer);
