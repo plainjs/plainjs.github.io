@@ -3,7 +3,10 @@
 }
 
 .higlighter_item__left {
-  animation: move_up 5s ease-in-out;
+  animation-name: move_up;
+  animation-iteration-count: infinite;
+  animation-delay: 3s;
+  animation-duration: 5s;
   opacity: 0;
   background: linear-gradient(
     to top,
@@ -13,7 +16,6 @@
   position: absolute;
   left: -100px;
   top: 0;
-  height: 100vh;
   width: 1px;
 }
 
@@ -31,7 +33,10 @@
 }
 
 .higlighter_item__right {
-  animation: move_bottom 5s ease-in-out;
+  animation-name: move_bottom;
+  animation-iteration-count: infinite;
+  animation-delay: 3s;
+  animation-duration: 5s;
   background: linear-gradient(
     to top,
     rgba(var(--accent-rgb), 0.6),
@@ -41,7 +46,6 @@
   position: absolute;
   right: -100px;
   top: 0;
-  height: 100vh;
   width: 1px;
 }
 
