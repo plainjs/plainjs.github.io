@@ -49,11 +49,7 @@ watch(() => {
   setTheme(state.theme);
 });
 
-const toggleButtonContainer = document.createElement("div");
-toggleButtonContainer.classList.add("w-full");
-toggleButtonContainer.classList.add("flex");
-toggleButtonContainer.classList.add("items-center");
-document.querySelector("header").append(toggleButtonContainer);
+const toggleButtonContainer = document.querySelector("#toggle-container");
 
 const toggleButton = html`
   <button class="ml-auto">

@@ -1,0 +1,71 @@
+@keyframes loading {
+  0% {
+    transform: scale(0.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.1);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  border: 10px solid white;
+  border-radius: 100%;
+  transform: scale(1);
+  box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.5);
+  transition: 1000ms transform ease;
+  animation-name: loading;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+:root {
+  /* modification of the nord light colors  */
+  --dark: #2e3440;
+  --gray: #8c97ac;
+  --light: #e9ecf8;
+  --bg: #fff;
+  --accent: #facc14;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #181819;
+    --light: #333;
+    --gray: #898989;
+    --dark: #efefef;
+    --accent: #facc14;
+  }
+}
+
+body[data-theme="light"] {
+  --dark: #2e3440;
+  --gray: #8c97ac;
+  --light: #e9ecf8;
+  --bg: #fff;
+  --accent: #facc14;
+}
+
+body[data-theme="dark"] {
+  --bg: #181819;
+  --light: #333;
+  --gray: #898989;
+  --dark: #efefef;
+  --accent: #facc14;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
