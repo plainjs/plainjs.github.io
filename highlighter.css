@@ -87,3 +87,9 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 768px) {
+  .higlighter_item__left,.higlighter_item__right {
+    display: none;
+  }
+}
