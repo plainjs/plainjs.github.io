@@ -1,4 +1,8 @@
-import { html, reactive, watch } from "https://esm.sh/@arrow-js/core";
+import {
+  html,
+  reactive,
+  watch,
+} from "https://esm.sh/@arrow-js/core@1.0.0-alpha.9";
 
 const THEMER_CONSTANT = "themer";
 
